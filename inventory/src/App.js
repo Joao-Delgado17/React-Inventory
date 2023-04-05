@@ -1,37 +1,39 @@
-import './App.css';
-import { PropTypes } from "prop-types";
-import Info from "./info.js";
+import "./App.css";
+import SearchBar from "./SearchBar";
+import { useState } from "react";
+import AddItem from "./AddItem";
+import ItemsDisplay from "./ItemsDisplay";
+import styled from "styled-components";
+
+const Title = styled.h1`
+  color: ${(props) => (props.color ? props.color : "black")};
+`;
+
 
 function App() {
+  const [filters, setFilters] = useState({});
+  const [data, setData] = useState({ items: [] });
+
+  const updateFilters = (searchParams) => {
+    setFilters(searchParams);
+  };
+
+  const addItemToData = (item) => {
+    let items = data["items"];
+    item.id = items.length;
+    items.push(item);
+    setData({ items: items });
+    console.log(data);
+  };
+
   return (
     <div className="App">
-      <Info title="Inventory"></Info>
-      <Info ></Info>
-      <AddItem text="Tim" number={"1"}></AddItem>
-      <AddItem></AddItem>
+      <Title color="red">test</Title>
+      <SearchBar updateSearchParams={updateFilters}></SearchBar>
+      <ItemsDisplay items={data["items"]}></ItemsDisplay>
+      <AddItem addItem={addItemToData}></AddItem>
     </div>
   );
 }
-
-function AddItem(props) {
-
-  return (
-    <form>
-      <label for="text-form">Type something: </label>
-      <input type="text" value={props.text} id="text-form"></input>
-      <p>{props.number}</p>
-    </form>
-  );
-}
-
-AddItem.defaultProps = {
-  number: 1,
-  text: "default",
-};
-
-AddItem.propTypes = {
-  number: PropTypes.number,
-  text: PropTypes.string,
-};
 
 export default App;
