@@ -58,8 +58,8 @@ function AddItem(props) {
           onChange={(e) => setBrand(e.target.value)}
         ></input>
       </div>
-      <div className="row mt-3">
-        <button type="button" className="col-3 justify-content-center btn btn-dark" onClick={addItemButtonPressed}>
+      <div className="row mt-3 justify-content-center">
+        <button type="button" className="col-3 btn btn-dark" onClick={addItemButtonPressed}>
           Add Item
         </button>
       </div>

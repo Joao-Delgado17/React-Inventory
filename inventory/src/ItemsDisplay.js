@@ -13,10 +13,10 @@ function ItemsDisplay(props) {
   };
 
   return <div className="container">
-    <div classNAme="row">
+    <div className="row">
       <h2>Items</h2>
     </div>
-    <div classNAme="row">
+    <div className="row">
       <table className="table table-striped">
         <thead>
           <tr>
